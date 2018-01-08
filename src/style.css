@@ -1,0 +1,70 @@
+header {
+	width: 800px;
+	margin: 0 auto;
+	background-color: blue;
+	height: 5vh;
+	margin-bottom: 5px;
+	color: #fff;
+	text-align: center;
+}
+
+.selectField{
+	display: grid;
+	grid-template-columns: 33% 33% 33%;
+	grid-template-rows: 20vh 25vh;
+	width: 800px;
+	margin: 0 auto;
+}
+
+.hello {
+	grid-column: 1 / 4;
+	grid-row: 1;
+	text-align: center;
+}
+
+.hello>p {
+	font-size: 1.5em;
+}
+
+.choice {
+	background-color: #999;
+	margin: 2px;
+	text-align: center;
+	font-size: 1.5em;
+	padding-top: 30%;
+}
+
+	.choice:hover {
+		background-color: #3c3;
+	}
+
+#matrix {
+	display: none;
+	grid-template-columns: 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5% 5%;
+	grid-template-rows: 4vh 4vh 4vh 4vh 4vh 4vh 4vh 4vh 4vh 4vh 4vh 4vh 4vh 4vh 4vh 4vh 4vh 4vh 4vh 4vh;
+	width: 800px;
+	margin: 0 auto;
+}
+
+#matrix .cell {
+	background-color: gray;
+	margin: 1px;
+} 
+
+#matrix .on {
+	background-color: blue;
+	margin: 1px;
+} 
+
+#matrix .targ {
+	background-color: red;
+	margin: 1px;
+} 
+
+footer {
+	background-color: #6cf;
+	text-align: center;
+	height: 5vh;
+	font-size: 1.5em; 
+	margin-top: 5px;
+}
