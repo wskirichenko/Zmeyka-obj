@@ -45,20 +45,20 @@ window.onload = function () {
 // Функция обработки нажатия клавиш управления
 	document.onkeydown = function(kodkey) {
 		if (kodkey.key == "d") {
-			game.countLR += 1;
-			game.move(game.countLR, game.countUpD, game.row, game.col);
+			game.col += 1;
+			game.move(game.row, game.col);
 		};
 		if (kodkey.key == "a") {
-			game.countLR -= 1;
-			game.move(game.countLR, game.countUpD, game.row, game.col);
+			game.col -= 1;
+			game.move(game.row, game.col);
 		};
 		if (kodkey.key == "w") {
-			game.countUpD -= 1;
-			game.move(game.countLR, game.countUpD, game.row, game.col);
+			game.row -= 1;
+			game.move(game.row, game.col);
 		};
 		if (kodkey.key == "s") {
-			game.countUpD += 1;
-			game.move(game.countLR, game.countUpD, game.row, game.col);
+			game.row += 1;
+			game.move(game.row, game.col);
 		};
 	};
 
@@ -91,6 +91,7 @@ window.onload = function () {
 		game.countLR = 0;
 		game.countUpD = 0;
 		game.createField(scol, srow, tip);
+		game.clearField();
 		game.col = getRandomInt(1, scol);
 		game.row = getRandomInt(1, srow);
 		game.setCell(game.row, game.col, true);
@@ -133,20 +134,24 @@ window.onload = function () {
 		ztarget.classList.add('targ');
 	};
 
-// Движение змейки
-// TODO  ---- Функцию необходимо переделать чтобы небыло
-	Zmeyka.prototype.move = function (c, c2, row, col) {
+	Zmeyka.prototype.clearField = function () {
 		for (var i = 1; i <= game.sizeCol; i++) {
 			for (var j = 1; j <= game.sizeRow; j++) {
 				game.setCell(i, j, false);
 			};	
 		};	
-		game.gameOver(row + c2, col + c);
-		game.setCell(row + c2,	col + c,	true);
-		game.getTarget(game.targRow, game.targCol);
-		game.comeTarget(row + c2, col + c, game.targRow, game.targCol);
 	};
 
+// Движение змейки
+	Zmeyka.prototype.move = function (row, col) {
+		game.clearField();
+		game.gameOver(row, col);
+		game.setCell(row, col, true);
+		game.getTarget(game.targRow, game.targCol);
+		game.comeTarget(row, col, game.targRow, game.targCol);
+	};
+
+// Если проиграл
 	Zmeyka.prototype.gameOver = function (row, col) {
 		if (((row > game.sizeRow) || (row < 1)) || ((col > game.sizeCol) || (col < 1))) {
 			alert('Вы проиграли, вы набрали: '+ game.mainCount +' очков');
